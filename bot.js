@@ -12,7 +12,7 @@ const T = new Twit({
 });
 
 function filterCarmelo(tweet) {
-    return tweet.toLowerCase() === "carmelo"
+    return tweet.toLowerCase() === "carmelo" || "traded"
 }
 
 function checkReporter(screen_name) {
@@ -20,8 +20,7 @@ function checkReporter(screen_name) {
         screen_name,
         q: "carmelo",
         exclude_replies: true,
-        count: 3,
-        trim_user: true,
+        count: 20,
         include_rts: false,
     }, function (err, data, response) { });
 };
