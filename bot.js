@@ -1,6 +1,6 @@
-const express = require('express');
-const app = express();
-app.set('port', (process.env.PORT || 3000));
+// const express = require('express');
+// const app = express();
+// app.set('port', (process.env.PORT || 3000));
 
 const noEyes = require('./api/noEyes.js');
 const Twit = require('twit');
@@ -30,11 +30,13 @@ function checkReporter(screen_name) {
 checkReporter('IanBegley')
 .then(tweets => {
     tweets.data.map(tweet => {
-        console.log(tweet.text.split(" "))
+       if(tweet.text.split(" ").filter(filterCarmelo).length > 0) {
+           console.log(tweet.text)
+       }
     })
 })
 .catch(err => console.log(err));
 
-app.listen(app.get('port'), function () {
-    console.log('App is running, server is listening on port ', app.get('port'));
-});
+// app.listen(app.get('port'), function () {
+//     console.log('App is running, server is listening on port ', app.get('port'));
+// });
