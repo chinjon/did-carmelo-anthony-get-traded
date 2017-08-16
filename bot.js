@@ -10,30 +10,43 @@ const T = new Twit({
     access_token: noEyes.twit.access.token,
     access_token_secret: noEyes.twit.access.tokenSecret
 });
+const { sendMsg } = require('./api/twil.js');
 
-function filterCarmelo(tweet) {
-    return tweet.toLowerCase() === "carmelo" || "traded"
-}
+const filterCarmelo = (tweet) => {
+    return tweet.toLowerCase() === "knick";
+};
 
-function checkReporter(screen_name) {
+const checkReporter = (screen_name) => {
    return T.get('statuses/user_timeline', {
         screen_name,
-        q: "carmelo",
+        q: "",
         exclude_replies: true,
         count: 20,
         include_rts: false,
     }, function (err, data, response) { });
 };
 
+const returnTweetsWithFilter = (tweets, filterFunc ) => {
+    tweets.map(tweet => {
+        if(tweet.text.split(" ").filter(filterFunc).length > 0) {
+            console.log(tweet.text);
+        }
+    });
+};
+
 // checkReporter('wojespn');
+// checkReporter('IanBegley')
+// .then(tweets => {
+//     tweets.data.map(tweet => {
+//        if(tweet.text.split(" ").filter(filterCarmelo).length > 0) {
+//            console.log(tweet.text)
+//        }
+//     })
+// })
+// .catch(err => console.log(err));
+
 checkReporter('IanBegley')
-.then(tweets => {
-    tweets.data.map(tweet => {
-       if(tweet.text.split(" ").filter(filterCarmelo).length > 0) {
-           console.log(tweet.text)
-       }
-    })
-})
+.then(tweets => {returnTweetsWithFilter(tweets.data, filterCarmelo)})
 .catch(err => console.log(err));
 
 // app.listen(app.get('port'), function () {
