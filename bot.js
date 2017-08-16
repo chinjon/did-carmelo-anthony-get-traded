@@ -45,6 +45,10 @@ const returnTweetsWithFilter = (tweets, filterFunc ) => {
 // })
 // .catch(err => console.log(err));
 
+const sendText = () => {
+    sendMsg('Carmelo Anthony Has Been Traded');
+}
+
 checkReporter('IanBegley')
 .then(tweets => {returnTweetsWithFilter(tweets.data, filterCarmelo)})
 .catch(err => console.log(err));
