@@ -1,10 +1,10 @@
 const noEyes = require('./api/noEyes.js');
 const twilio = require('twilio');
 
-const accountSid = noEyes.twil.testSid;
-const authToken = noEyes.twil.testAuth;
+// const accountSid = noEyes.twil.testSid;
+// const authToken = noEyes.twil.testAuth;
 
-const client = new twilio(accountSid, authToken);
+// const client = new twilio(accountSid, authToken);
 
 const sendMsg = (body, to, from) => {
     client.messages.create({
