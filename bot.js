@@ -3,6 +3,7 @@
 // app.set('port', (process.env.PORT || 3000));
 
 const noEyes = require('./api/noEyes.js');
+const {sendEmail} = require('./mail.js');
 const Twit = require('twit');
 const T = new Twit({
     consumer_key: noEyes.twit.api.apiKey,
@@ -10,7 +11,6 @@ const T = new Twit({
     access_token: noEyes.twit.access.token,
     access_token_secret: noEyes.twit.access.tokenSecret
 });
-const { sendMsg } = require('./api/twil.js');
 
 const filterCarmelo = (tweet) => {
     return tweet.toLowerCase() === "knick";
@@ -23,7 +23,7 @@ const checkReporter = (screen_name) => {
         exclude_replies: true,
         count: 20,
         include_rts: false,
-    }, function (err, data, response) { });
+    });
 };
 
 const returnTweetsWithFilter = (tweets, filterFunc ) => {
@@ -50,8 +50,18 @@ const sendText = () => {
 }
 
 checkReporter('IanBegley')
-.then(tweets => {returnTweetsWithFilter(tweets.data, filterCarmelo)})
-.catch(err => console.log(err));
+    .then(tweets => {returnTweetsWithFilter(tweets.data, filterCarmelo)})
+    .catch(err => console.log(err));
+
+// function checkMelo() {
+//     return new Promise((resolve, reject) => {
+
+//     })
+// }
+
+
+// need to reconstruct promise
+
 
 // app.listen(app.get('port'), function () {
 //     console.log('App is running, server is listening on port ', app.get('port'));

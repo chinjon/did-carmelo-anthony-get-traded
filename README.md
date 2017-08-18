@@ -12,3 +12,4 @@ Partially inspired by my friend [Wesley](https://github.com/wesleylhandy) and [h
 - [ ] ~~Experiment with the Burner API as a substitute~~ 
 - [ ] Implement SparkPost API to send email
 - [ ] Find efficient alternative to Tweet Stream for function to check Twitter feed.
+- [ ] Deploy to Heroku
