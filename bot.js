@@ -3,7 +3,7 @@
 // app.set('port', (process.env.PORT || 3000));
 
 const noEyes = require('./api/noEyes.js');
-const {sendEmail} = require('./mail.js');
+const dm = require('./dm.js');
 const Twit = require('twit');
 const T = new Twit({
     consumer_key: noEyes.twit.api.apiKey,
@@ -13,7 +13,7 @@ const T = new Twit({
 });
 
 const filterCarmelo = (tweet) => {
-    return tweet.toLowerCase() === "knick";
+    return tweet.toLowerCase() === "melo";
 };
 
 const checkReporter = (screen_name) => {
@@ -27,11 +27,13 @@ const checkReporter = (screen_name) => {
 };
 
 const returnTweetsWithFilter = (tweets, filterFunc ) => {
+    let counter = 0;
     tweets.map(tweet => {
         if(tweet.text.split(" ").filter(filterFunc).length > 0) {
-            console.log(tweet.text);
+            counter++;
         }
     });
+    return counter;
 };
 
 // checkReporter('wojespn');
@@ -47,10 +49,13 @@ const returnTweetsWithFilter = (tweets, filterFunc ) => {
 
 const sendText = () => {
     sendMsg('Carmelo Anthony Has Been Traded');
+
 }
 
 checkReporter('IanBegley')
-    .then(tweets => {returnTweetsWithFilter(tweets.data, filterCarmelo)})
+    .then(tweets => {
+        returnTweetsWithFilter(tweets.data, filterCarmelo) > 0 ? dm.dm("chin_jon") : null
+    })
     .catch(err => console.log(err));
 
 // function checkMelo() {
