@@ -13,15 +13,9 @@ exports.dm = function(screen_name) {
         text: 'my dude, did you understand the Twin Peaks finale?'
     }, function(err, data, response) {
         if(err) {
-            console.log(err)
+            console.log(err);
         } else {
             console.log('success!');
         }
     });
 }
-
-// module.export = dm;
-
-// T.get("users/lookup", { screen_name: "chin_jon"}, function(err, data, response){
-//     console.log(data[0].id)
-// });

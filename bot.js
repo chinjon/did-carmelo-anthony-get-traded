@@ -36,17 +36,6 @@ const returnTweetsWithFilter = (tweets, filterFunc ) => {
     return counter;
 };
 
-// checkReporter('wojespn');
-// checkReporter('IanBegley')
-// .then(tweets => {
-//     tweets.data.map(tweet => {
-//        if(tweet.text.split(" ").filter(filterCarmelo).length > 0) {
-//            console.log(tweet.text)
-//        }
-//     })
-// })
-// .catch(err => console.log(err));
-
 const sendText = () => {
     sendMsg('Carmelo Anthony Has Been Traded');
 

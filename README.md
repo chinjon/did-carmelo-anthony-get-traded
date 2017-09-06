@@ -10,6 +10,7 @@ Partially inspired by my friend [Wesley](https://github.com/wesleylhandy) and [h
 
 - [ ] ~~Test app (my Twilio Number expired)~~
 - [ ] ~~Experiment with the Burner API as a substitute~~ 
-- [ ] Implement SparkPost API to send email
+- [ ] ~~Implement SparkPost API to send email~~
 - [ ] Find efficient alternative to Tweet Stream for function to check Twitter feed.
+- [x] Implement Direct Messaging as alternative.
 - [ ] Deploy to Heroku
